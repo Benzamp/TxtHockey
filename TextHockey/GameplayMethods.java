@@ -57,9 +57,9 @@ public class GameplayMethods {
 				System.out.println(playerTeam.getCenter().getFullName() + " from The " + playerTeam.getTeamName()
 				+ " prepares to take the faceoff against " + comTeam.getCenter().getFullName()
 				+ " from The " + comTeam.getTeamName() + ".\n");
-				System.out.println("_________");
-				System.out.println("|FACEOFF|");
-				String sel = scan.nextLine();
+				System.out.println("_________________________________");
+				System.out.println("|Press ENTER to take the faceoff|");
+				String sel = "faceoff";
 				clearScreen();
 				
 				boolean won = skillCheck(playerTeam.getCenter(), comTeam.getCenter(), "faceoff", playsMade);
@@ -101,13 +101,13 @@ public class GameplayMethods {
 							} else if (sel.compareTo("shoot") == 0) {
 								playerShots++;
 								Tmap.clear();
-								Tmap = randomDialog(playerTeam, comTeam, won, sel, playerScore, comScore);
-								String shootText = Tmap.firstEntry().getValue();
-								System.out.println(shootText);
-								puckPosessor = Tmap.firstKey();
 								
 								System.out.println(won);
 								if (won) {
+									Tmap = randomDialog(playerTeam, comTeam, won, sel, playerScore, comScore);
+									puckPosessor = Tmap.firstKey();
+									String shootText = Tmap.firstEntry().getValue();
+									System.out.println(shootText);
 									playerShots++;
 									comSaves++;
 									playsMade++;
@@ -116,6 +116,11 @@ public class GameplayMethods {
 									System.out.println(comTeam + ": " + comScore + "\n");
 									break;
 									
+								} else {
+									Tmap = randomDialog(playerTeam, comTeam, false, sel, playerScore, comScore);
+									puckPosessor = Tmap.firstKey();
+									String shootText = Tmap.firstEntry().getValue();
+									System.out.println(shootText);
 								}
 								
 								gameClock--;
