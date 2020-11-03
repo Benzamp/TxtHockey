@@ -59,6 +59,7 @@ public class GameplayMethods {
 				+ " from The " + comTeam.getTeamName() + ".\n");
 				System.out.println("_________________________________");
 				System.out.println("|Press ENTER to take the faceoff|");
+				scan.nextLine();
 				String sel = "faceoff";
 				clearScreen();
 				
