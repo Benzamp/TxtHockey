@@ -102,8 +102,6 @@ public class GameplayMethods {
 							} else if (sel.compareTo("shoot") == 0) {
 								playerShots++;
 								Tmap.clear();
-								
-								System.out.println(won);
 								if (won) {
 									Tmap = randomDialog(playerTeam, comTeam, won, sel, playerScore, comScore);
 									puckPosessor = Tmap.firstKey();
