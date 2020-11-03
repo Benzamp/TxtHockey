@@ -11,8 +11,8 @@ public class GameplayMethods {
 	
 	public static void mainMenu() {
 		System.out.println("---------TxtHOCKEY --------");
-		System.out.println("1) CREATE A TEAM            |");
-		System.out.println("2) RANDOMIZE TEAM           |");
+		System.out.println("1) CREATE TEAM              |");
+		System.out.println("2) GENERATE TEAM            |");
 		System.out.println("3) Quit                     |");
 		System.out.println("----------------------------");
 	}

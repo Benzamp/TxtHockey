@@ -25,6 +25,12 @@ public class TextHockeyDriver {
 			System.out.println();
 				
 			if (choice == 1) {
+				ArrayList<Team> teams = new ArrayList<>();
+				playerTeam = teamMethods.createdTeam();
+				teams = teamMethods.generateTeam(1);
+				comTeam = teams.get(0);
+				gameMethods.gameLoop(playerTeam, comTeam);
+				
 					
 			} else if (choice == 2) {
 				ArrayList<Team> teams = new ArrayList<>();

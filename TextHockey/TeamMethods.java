@@ -8,6 +8,118 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class TeamMethods {
+	
+	public static Team createdTeam() {
+		Scanner scan = new Scanner(System.in);
+		
+		Player center = new Player();
+		Player wing = new Player();
+		Player def = new Player();
+		Player goalie = new Player();
+		
+		Team createdTeam = new Team();
+		
+		System.out.println("Team City: ");
+		String city = scan.nextLine();
+		System.out.println("Team Name: ");
+		String name = scan.nextLine();
+		
+		System.out.println("Center first name: ");
+		String cFirst = scan.nextLine();
+		System.out.println("Center last name: ");
+		String cLast = scan.nextLine();
+		System.out.println("Center number: ");
+		int cNumber = scan.nextInt();
+		scan.nextLine();
+		
+		System.out.println("Center faceoff: (1/10)");
+		int cFace = scan.nextInt();
+		System.out.println("Center shooting (1/10): ");
+		int cShoot = scan.nextInt();
+		System.out.println("Center passing (1/10): ");
+		int cPass = scan.nextInt();
+		System.out.println("Center skating (1/10): ");
+		int cSkate = scan.nextInt();
+		scan.nextLine();
+		
+		System.out.println("Wing first name: ");
+		String wFirst = scan.nextLine();
+		System.out.println("Wing last name: ");
+		String wLast = scan.nextLine();
+		System.out.println("Wing number: ");
+		int wNumber = scan.nextInt();
+		scan.nextLine();
+		
+		System.out.println("Wing shooting (1/10): ");
+		int wShoot = scan.nextInt();
+		System.out.println("Wing passing (1/10): ");
+		int wPass = scan.nextInt();
+		System.out.println("Wing skating (1/10): ");
+		int wSkate = scan.nextInt();
+		scan.nextLine();
+		
+		System.out.println("Defense first name: ");
+		String dFirst = scan.nextLine();
+		System.out.println("Defense last name: ");
+		String dLast = scan.nextLine();
+		System.out.println("Defense number: ");
+		int dNumber = scan.nextInt();
+		scan.nextLine();
+		
+		System.out.println("Defense shooting (1/10): ");
+		int dShoot = scan.nextInt();
+		System.out.println("Defense passing (1/10): ");
+		int dPass = scan.nextInt();
+		System.out.println("Defense skating (1/10): ");
+		int dSkate = scan.nextInt();
+		scan.nextLine();
+		
+		System.out.println("Goalie first name: ");
+		String gFirst = scan.nextLine();
+		System.out.println("Goalie last name: ");
+		String gLast = scan.nextLine();
+		System.out.println("Goalie number: ");
+		int gNumber = scan.nextInt();
+		scan.nextLine();
+		
+		center.setFirstName(cFirst);
+		center.setLastName(cLast);
+		center.setFaceoff(cFace);
+		center.setPassing(cPass);
+		center.setShooting(cShoot);
+		center.setSkating(cSkate);
+		
+		wing.setFirstName(wFirst);
+		wing.setLastName(wLast);
+		wing.setPassing(wPass);
+		wing.setShooting(wShoot);
+		wing.setSkating(wSkate);
+		
+		def.setFirstName(dFirst);
+		def.setLastName(dLast);
+		def.setPassing(dPass);
+		def.setShooting(dShoot);
+		def.setSkating(dSkate);
+		
+		goalie.setFirstName(gFirst);
+		goalie.setFirstName(gLast);
+		
+		createdTeam.setTeamName(name);
+		createdTeam.setCity(city);
+		
+		createdTeam.setCenter(center);
+		createdTeam.setWing(wing);
+		createdTeam.setDefense(def);
+		createdTeam.setGoalie(goalie);
+		
+		center.setTeam(createdTeam);
+		wing.setTeam(createdTeam);
+		def.setTeam(createdTeam);
+		goalie.setTeam(createdTeam);
+		
+		return createdTeam;
+	}
+	
 	public static ArrayList<Team> generateTeam(int numberOfTeams) throws FileNotFoundException {
 		ArrayList<String> positions = new ArrayList<>();
 		ArrayList<Team> teams = new ArrayList<>();
