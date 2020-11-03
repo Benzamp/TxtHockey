@@ -92,7 +92,7 @@ public class GameplayMethods {
 								else
 									playsMade = 0;
 								Tmap.clear();
-								Tmap = randomDialog(playerTeam, comTeam, won, "pass", playerScore, comScore);
+								Tmap = randomDialog(playerTeam, comTeam, won, sel, playerScore, comScore);
 								String passtext = Tmap.firstEntry().getValue();
 								System.out.println(passtext);
 								puckPosessor = Tmap.firstKey();
@@ -100,13 +100,13 @@ public class GameplayMethods {
 								
 							} else if (sel.compareTo("shoot") == 0) {
 								playerShots++;
-								System.out.println("won skill check: " + won);
 								Tmap.clear();
-								Tmap = randomDialog(playerTeam, comTeam, won, "shoot", playerScore, comScore);
+								Tmap = randomDialog(playerTeam, comTeam, won, sel, playerScore, comScore);
 								String shootText = Tmap.firstEntry().getValue();
 								System.out.println(shootText);
 								puckPosessor = Tmap.firstKey();
 								
+								System.out.println(won);
 								if (won) {
 									playerShots++;
 									comSaves++;
@@ -126,7 +126,7 @@ public class GameplayMethods {
 								else
 									playsMade = 0;
 								Tmap.clear();
-								Tmap = randomDialog(playerTeam, comTeam, won, "skate", playerScore, comScore);
+								Tmap = randomDialog(playerTeam, comTeam, won, sel, playerScore, comScore);
 								String skateText = Tmap.firstEntry().getValue();
 								skateText.format(puckPosessor.getFullName());
 								System.out.println(skateText);
@@ -292,6 +292,7 @@ public class GameplayMethods {
 	
 	public static TreeMap<Player, String> randomDialog(Team pTeam, Team cTeam, boolean won, String action, int playerScore, int comScore) {
 		TreeMap<Player, String> dialog = new TreeMap<Player, String>();
+		dialog.clear();
 		Player hasPuck = null;
 		String text = null;
 		int[] dice = new int[7];
@@ -323,7 +324,7 @@ public class GameplayMethods {
 		
 		faceoffWonToWing.add("The two centers fight for possession and the puck ends of on the stick of the " + pTeam 
 				+ " winger " + pTeam.getWing().getLastName() + ".\n " + pTeam.getWing().getFullName() + " contemplates his next move.");
-		faceoffLostToWing.add(cTeam.getCenter().getLastName() + " of the " + cTeam + " wins it clearly to the wing. \n" 
+		faceoffLostToWing.add(cTeam.getCenter().getLastName() + " of the " + cTeam + " wins it cleanly to the wing. \n" 
 				+ cTeam.getWing().getLastName() + " handles the puck near the boards.\n");
 		//******************************************************************************************************************************
 		//************************************************PASSING***********************************************************************
@@ -381,31 +382,43 @@ public class GameplayMethods {
 				int randIndex = new java.util.Random().nextInt(passWon.size());
 				text = passWon.get(randIndex);
 				hasPuck = pTeam.getWing();
-			} else if (action.toLowerCase().compareTo("pass") == 0 && won == false){
+			} else {
 				int randIndex = new java.util.Random().nextInt(passLost.size());
 				text = passLost.get(randIndex);
 				hasPuck = cTeam.getWing();
-				}
+			}
+		} else if (action.toLowerCase().compareTo("pass") == 0 && won == false){
+			int randIndex = new java.util.Random().nextInt(passLost.size());
+			text = passLost.get(randIndex);
+			hasPuck = cTeam.getWing();
 		} else if (action.equals("shoot") && won == true) {
 			if (roll % 2 == 0) {
 				int randIndex = new java.util.Random().nextInt(shootWon.size());
 				text = shootWon.get(randIndex);
 				hasPuck = pTeam.getWing();
-			} else if (action.equals("shoot") && won == false) {
+			} else {
 				int randIndex = new java.util.Random().nextInt(shootLost.size());
 				text = shootLost.get(randIndex);
 				hasPuck = cTeam.getWing();
-				}
+			}
+		}else if (action.equals("shoot") && won == false) {
+			int randIndex = new java.util.Random().nextInt(shootLost.size());
+			text = shootLost.get(randIndex);
+			hasPuck = cTeam.getWing();
 		} else if (action.equals("skate") && won == true) {
 			if (roll % 2 == 0) {
 				int randIndex = new java.util.Random().nextInt(skateWon.size());
 				text = skateWon.get(randIndex);
 				hasPuck = pTeam.getWing();
-			} else if (action.equals("skate") && won == false){
+			} else {
 				int randIndex = new java.util.Random().nextInt(skateLost.size());
 				text = skateLost.get(randIndex);
 				hasPuck = cTeam.getWing();
 				}
+			} else if (action.equals("skate") && won == false){
+				int randIndex = new java.util.Random().nextInt(skateLost.size());
+				text = skateLost.get(randIndex);
+				hasPuck = cTeam.getWing();
 		}
 		dialog.put(hasPuck, text);
 		return dialog;
