@@ -5,8 +5,8 @@ A console text-based hockey game.
 
 Created by: Benjamin Harrison 2020
 
-Create a team is not working yet since I have been working on the team and player generation plus game logic.
-
+**Currently have an bug where feedback says the opponent's goalie made a save but gives player a goal. Working on that...
+ 
 I have a file listing cities, one for mascots, and some for first and last names. I select from these lists at random to create player objects and add them to team objects.
 
 The game play is not that fun and unfair as of right now, but I'll be working on it.
